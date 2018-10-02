@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.ThCoinFreezeItemMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.ThCoinFreezeItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="freeze_id" jdbcType="BIGINT" property="freezeId" />
+    <result column="package_id" jdbcType="BIGINT" property="packageId" />
+    <result column="money" jdbcType="BIGINT" property="money" />
+    <result column="same_period_id" jdbcType="BIGINT" property="samePeriodId" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="yn" jdbcType="BIT" property="yn" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+</mapper>

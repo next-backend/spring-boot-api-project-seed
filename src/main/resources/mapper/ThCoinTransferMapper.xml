@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.ThCoinTransferMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.ThCoinTransfer">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="trade_id" jdbcType="BIGINT" property="tradeId" />
+    <result column="trade_in_id" jdbcType="BIGINT" property="tradeInId" />
+    <result column="out_account" jdbcType="BIGINT" property="outAccount" />
+    <result column="in_account" jdbcType="BIGINT" property="inAccount" />
+    <result column="money" jdbcType="BIGINT" property="money" />
+    <result column="same_period_id" jdbcType="BIGINT" property="samePeriodId" />
+    <result column="state" jdbcType="BIT" property="state" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="operator" jdbcType="BIGINT" property="operator" />
+    <result column="erp" jdbcType="VARCHAR" property="erp" />
+    <result column="erp_name" jdbcType="VARCHAR" property="erpName" />
+    <result column="auditor_erp" jdbcType="VARCHAR" property="auditorErp" />
+    <result column="auditor_erp_name" jdbcType="VARCHAR" property="auditorErpName" />
+    <result column="process_instance_id" jdbcType="VARCHAR" property="processInstanceId" />
+    <result column="yn" jdbcType="BIT" property="yn" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.ThCoinAccountMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.ThCoinAccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="brand_owner" jdbcType="BIGINT" property="brandOwner" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="freeze" jdbcType="DECIMAL" property="freeze" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="create_user" jdbcType="BIGINT" property="createUser" />
+    <result column="last_update_user" jdbcType="BIGINT" property="lastUpdateUser" />
+    <result column="yn" jdbcType="BIT" property="yn" />
+    <result column="ts" jdbcType="TIMESTAMP" property="ts" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="same_period_id" jdbcType="BIGINT" property="samePeriodId" />
+  </resultMap>
+</mapper>
