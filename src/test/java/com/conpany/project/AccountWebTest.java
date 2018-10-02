@@ -17,18 +17,4 @@ public class AccountWebTest extends BaseWebTest {
         MockUtil.mockPost(mockMvc, RESOURCE_PATH +"/list",params);
     }
 
-    @Test
-    public void uploadCmd1() throws Exception {
-        String sumProjectId = "2123";
-        int type = 1;
-        int cmd = 1;
-        String pwd = "123";
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("sumProjectId", sumProjectId);
-        params.put("type", type + "");
-        params.put("pwd", pwd + "");
-        params.put("cmd", cmd + "");
-        MockUtil.mockPost(mockMvc, "/project/upload", params);
-    }
-
 }

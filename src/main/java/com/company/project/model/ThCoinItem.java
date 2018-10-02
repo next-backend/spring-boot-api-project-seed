@@ -1,5 +1,8 @@
 package com.company.project.model;
 
+import lombok.Builder;
+import tk.mybatis.mapper.annotation.Version;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -34,6 +37,9 @@ public class ThCoinItem {
      */
     @Column(name = "same_period_id")
     private Long samePeriodId;
+
+    @Version
+    private Integer version ;
 
     /**
      * @return id
@@ -167,5 +173,13 @@ public class ThCoinItem {
      */
     public void setSamePeriodId(Long samePeriodId) {
         this.samePeriodId = samePeriodId;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

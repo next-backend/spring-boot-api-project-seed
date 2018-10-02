@@ -8,4 +8,7 @@ import com.company.project.core.Service;
  */
 public interface ThCoinAccountService extends Service<ThCoinAccount> {
 
+    ThCoinAccount findOne(Long brandId, Integer type, Long samePeriodId) ;
+
+    void balancePlus(Long brandId, Integer type, Long samePeriodId,Long money) ;
 }

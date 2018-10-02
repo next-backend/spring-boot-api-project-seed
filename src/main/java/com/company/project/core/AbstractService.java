@@ -81,4 +81,14 @@ public abstract class AbstractService<T> implements Service<T> {
     public List<T> findAll() {
         return mapper.selectAll();
     }
+
+    @Override
+    public int delete(T t) {
+        return mapper.delete(t);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(T t) {
+        return mapper.updateByPrimaryKeySelective(t);
+    }
 }

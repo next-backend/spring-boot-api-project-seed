@@ -19,4 +19,21 @@ public class ThCoinAccountServiceImpl extends AbstractService<ThCoinAccount> imp
     @Resource
     private ThCoinAccountMapper thCoinAccountMapper;
 
+    @Override
+    public ThCoinAccount findOne(Long brandId, Integer type, Long samePeriodId) {
+        ThCoinAccount condition = new ThCoinAccount() ;
+        condition.setBrandOwner(brandId);
+        condition.setType(type);
+        condition.setSamePeriodId(samePeriodId);
+        return thCoinAccountMapper.selectOne(condition) ;
+    }
+
+    @Override
+    public void balancePlus(Long brandId, Integer type, Long samePeriodId, Long money) {
+        ThCoinAccount account = this.findOne(brandId, type, samePeriodId);
+        if (account != null) {
+            account.setBalance(account.getBalance() + money);
+            this.updateByPrimaryKeyWithVersion(account);
+        }
+    }
 }
