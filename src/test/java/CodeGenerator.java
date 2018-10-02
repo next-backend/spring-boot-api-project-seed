@@ -1,5 +1,7 @@
 import com.google.common.base.CaseFormat;
+import com.google.common.collect.Lists;
 import freemarker.template.TemplateExceptionHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
@@ -16,9 +18,10 @@ import static com.company.project.core.ProjectConstant.*;
 /**
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
  */
+@Slf4j
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/test";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/dlink";
     private static final String JDBC_USERNAME = "root";
     private static final String JDBC_PASSWORD = "123456";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
@@ -37,7 +40,13 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
-        genCode("输入表名");
+        genCode("th_coin_account");
+        genCode("th_coin_item");
+        genCode("th_coin_trade");
+        genCode("th_coin_freeze");
+        genCode("th_coin_freeze_item");
+        genCode("th_coin_transfer");
+        genCode("th_coin_transfer_item");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
 
@@ -104,6 +113,10 @@ public class CodeGenerator {
         tableConfiguration.setTableName(tableName);
         if (StringUtils.isNotEmpty(modelName))tableConfiguration.setDomainObjectName(modelName);
         tableConfiguration.setGeneratedKey(new GeneratedKey("id", "Mysql", true, null));
+        //指定类型
+        ColumnOverride ynCo = new ColumnOverride("yn") ;
+        ynCo.setJavaType("java.lang.Integer");
+        tableConfiguration.addColumnOverride(ynCo);
         context.addTableConfiguration(tableConfiguration);
 
         List<String> warnings;
@@ -115,7 +128,7 @@ public class CodeGenerator {
 
             boolean overwrite = true;
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);
-            warnings = new ArrayList<String>();
+            warnings = Lists.newArrayList();
             generator = new MyBatisGenerator(config, callback, warnings);
             generator.generate(null);
         } catch (Exception e) {
@@ -126,9 +139,9 @@ public class CodeGenerator {
             throw new RuntimeException("生成Model和Mapper失败：" + warnings);
         }
         if (StringUtils.isEmpty(modelName)) modelName = tableNameConvertUpperCamel(tableName);
-        System.out.println(modelName + ".java 生成成功");
-        System.out.println(modelName + "Mapper.java 生成成功");
-        System.out.println(modelName + "Mapper.xml 生成成功");
+        log.debug(modelName + ".java 生成成功");
+        log.debug(modelName + "Mapper.java 生成成功");
+        log.debug(modelName + "Mapper.xml 生成成功");
     }
 
     public static void genService(String tableName, String modelName) {
@@ -149,7 +162,7 @@ public class CodeGenerator {
             }
             cfg.getTemplate("service.ftl").process(data,
                     new FileWriter(file));
-            System.out.println(modelNameUpperCamel + "Service.java 生成成功");
+            log.debug(modelNameUpperCamel + "Service.java 生成成功");
 
             File file1 = new File(PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_SERVICE_IMPL + modelNameUpperCamel + "ServiceImpl.java");
             if (!file1.getParentFile().exists()) {
@@ -157,7 +170,7 @@ public class CodeGenerator {
             }
             cfg.getTemplate("service-impl.ftl").process(data,
                     new FileWriter(file1));
-            System.out.println(modelNameUpperCamel + "ServiceImpl.java 生成成功");
+            log.debug(modelNameUpperCamel + "ServiceImpl.java 生成成功");
         } catch (Exception e) {
             throw new RuntimeException("生成Service失败", e);
         }
@@ -183,7 +196,7 @@ public class CodeGenerator {
             //cfg.getTemplate("controller-restful.ftl").process(data, new FileWriter(file));
             cfg.getTemplate("controller.ftl").process(data, new FileWriter(file));
 
-            System.out.println(modelNameUpperCamel + "Controller.java 生成成功");
+            log.debug(modelNameUpperCamel + "Controller.java 生成成功");
         } catch (Exception e) {
             throw new RuntimeException("生成Controller失败", e);
         }
