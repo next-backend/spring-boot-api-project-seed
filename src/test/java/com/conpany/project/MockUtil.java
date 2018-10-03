@@ -26,7 +26,7 @@ public class MockUtil {
         mvc.perform(builder).andDo(MockMvcResultHandlers.print());
     }
 
-    public static void mockPost(MockMvc mvc, String uri, HashMap<String, String> params) throws Exception {
+    public static void mockPost(MockMvc mvc, String uri, Map<String, String> params) throws Exception {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post(uri, "json").characterEncoding("UTF-8")
                 .contentType(MediaType.APPLICATION_JSON);
         if (params != null) {
