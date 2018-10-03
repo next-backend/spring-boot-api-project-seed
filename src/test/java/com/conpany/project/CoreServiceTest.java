@@ -52,12 +52,27 @@ public class CoreServiceTest {
         item.setBrandOwner(2050L);
         item.setSamePeriodId(0L);
         item.setYn(Yn.Yes.getCode());
-        TaskUtil.runTask(5, new TaskRunner() {
+        TaskRunner task1 = new TaskRunner() {
             @Override
             protected void call() {
                 accountCore.balancePlus(item);
             }
-        });
+        } ;
+        item.setBrandOwner(2051L);
+        TaskRunner task2 = new TaskRunner() {
+            @Override
+            protected void call() {
+                accountCore.balancePlus(item);
+            }
+        } ;
+        item.setBrandOwner(2052L);
+        TaskRunner task3 = new TaskRunner() {
+            @Override
+            protected void call() {
+                accountCore.balancePlus(item);
+            }
+        } ;
+        TaskUtil.runTask(task1,task2,task3);
     }
 
 }

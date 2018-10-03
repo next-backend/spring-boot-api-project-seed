@@ -13,7 +13,7 @@ import java.util.Map;
 
 
 public class AccountWebTest extends BaseWebTest {
-    private static final String RESOURCE_PATH = "/th/coin/account" ;
+    private static final String RESOURCE_PATH = "http://localhost:8080/th/coin/account" ;
 
     @Test
     public void list() throws Exception {
@@ -38,7 +38,7 @@ public class AccountWebTest extends BaseWebTest {
         item.setSamePeriodId(0L);
         item.setYn(Yn.Yes.getCode());
         Map<String, String> params = BeanUtils.describe(item)  ;
-        TaskUtil.runTask(10, new TaskRunner() {
+        TaskRunner task1 = new TaskRunner() {
             @Override
             protected void call() {
                 try {
@@ -47,7 +47,31 @@ public class AccountWebTest extends BaseWebTest {
                     e.printStackTrace();
                 }
             }
-        });
+        } ;
+        item.setBrandOwner(2051L);
+        TaskRunner task2 = new TaskRunner() {
+            @Override
+            protected void call() {
+                try {
+                    MockUtil.mockPost(mockMvc, RESOURCE_PATH +"/balance/plus",params);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } ;
+        item.setBrandOwner(2052L);
+        TaskRunner task3 = new TaskRunner() {
+            @Override
+            protected void call() {
+                try {
+                    MockUtil.mockPost(mockMvc, RESOURCE_PATH +"/balance/plus",params);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } ;
+        TaskUtil.runTask(task1,task2,task3);
+
     }
 
 }
