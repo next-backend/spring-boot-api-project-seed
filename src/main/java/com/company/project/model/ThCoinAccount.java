@@ -1,7 +1,5 @@
 package com.company.project.model;
 
-import tk.mybatis.mapper.annotation.Version;
-
 import java.util.Date;
 import javax.persistence.*;
 
@@ -62,8 +60,7 @@ public class ThCoinAccount {
     @Column(name = "same_period_id")
     private Long samePeriodId;
 
-    @Version
-    private Integer version ;
+    private Integer version;
 
     /**
      * @return id
@@ -275,10 +272,16 @@ public class ThCoinAccount {
         this.samePeriodId = samePeriodId;
     }
 
+    /**
+     * @return version
+     */
     public Integer getVersion() {
         return version;
     }
 
+    /**
+     * @param version
+     */
     public void setVersion(Integer version) {
         this.version = version;
     }

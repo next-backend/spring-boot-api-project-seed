@@ -17,4 +17,10 @@ public class AccountWebTest extends BaseWebTest {
         MockUtil.mockPost(mockMvc, RESOURCE_PATH +"/list",params);
     }
 
+    @Test
+    public void balancePlus() throws Exception {
+        HashMap<String, String> params = Maps.newHashMap() ;
+        MockUtil.mockPost(mockMvc, RESOURCE_PATH +"/balance/plus",params);
+    }
+
 }

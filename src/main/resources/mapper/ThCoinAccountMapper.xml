@@ -14,9 +14,10 @@
     <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
     <result column="create_user" jdbcType="BIGINT" property="createUser" />
     <result column="last_update_user" jdbcType="BIGINT" property="lastUpdateUser" />
-    <result column="yn" jdbcType="BIT" property="yn" javaType="integer"/>
+    <result column="yn" jdbcType="BIT" property="yn" />
     <result column="ts" jdbcType="TIMESTAMP" property="ts" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="same_period_id" jdbcType="BIGINT" property="samePeriodId" />
+    <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
 </mapper>

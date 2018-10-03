@@ -10,9 +10,10 @@
     <result column="amount" jdbcType="BIGINT" property="amount" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
-    <result column="yn" jdbcType="BIT" property="yn" javaType="integer"/>
+    <result column="yn" jdbcType="BIT" property="yn" />
     <result column="ts" jdbcType="TIMESTAMP" property="ts" />
     <result column="type" jdbcType="INTEGER" property="type" />
     <result column="same_period_id" jdbcType="BIGINT" property="samePeriodId" />
+    <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
 </mapper>

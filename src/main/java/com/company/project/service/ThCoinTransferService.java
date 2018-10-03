@@ -4,7 +4,7 @@ import com.company.project.core.Service;
 
 
 /**
- * Created by CodeGenerator on 2018/10/02.
+ * Created by CodeGenerator on 2018/10/03.
  */
 public interface ThCoinTransferService extends Service<ThCoinTransfer> {
 

@@ -52,7 +52,7 @@ public class CoreServiceTest {
         item.setBrandOwner(2050L);
         item.setSamePeriodId(0L);
         item.setYn(Yn.Yes.getCode());
-        TaskUtil.runTask(20, new TaskRunner() {
+        TaskUtil.runTask(5, new TaskRunner() {
             @Override
             protected void call() {
                 accountCore.balancePlus(item);

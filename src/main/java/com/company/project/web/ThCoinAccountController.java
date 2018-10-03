@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by CodeGenerator on 2018/10/02.
+* Created by CodeGenerator on 2018/10/03.
 */
 @RestController
 @RequestMapping("/th/coin/account")
@@ -30,7 +30,7 @@ public class ThCoinAccountController {
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestParam Integer id) {
+    public Result delete(@RequestParam Long id) {
         thCoinAccountService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
@@ -42,7 +42,7 @@ public class ThCoinAccountController {
     }
 
     @PostMapping("/detail")
-    public Result detail(@RequestParam Integer id) {
+    public Result detail(@RequestParam Long id) {
         ThCoinAccount thCoinAccount = thCoinAccountService.findById(id);
         return ResultGenerator.genSuccessResult(thCoinAccount);
     }

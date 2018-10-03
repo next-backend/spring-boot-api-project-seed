@@ -44,7 +44,7 @@ public class ThCoinItemServiceImpl extends AbstractService<ThCoinItem> implement
         } else {
             sourceItem = this.selectNegative(item.getBrandOwner(), item.getType(), samePeriodId);
             Long negativeAmount = sourceItem == null ? 0L : sourceItem.getAmount();
-            log.info("负值j金额，{},negativeAmount:{}", negativeAmount);
+            log.info("负值金额，{},negativeAmount:{}", negativeAmount);
 
             if (negativeAmount < 0) {
                 //负值处理逻辑
@@ -80,7 +80,7 @@ public class ThCoinItemServiceImpl extends AbstractService<ThCoinItem> implement
             log.info("同期金额明细不存在，新增: {}", JSON.toJSONString(item));
         } else {
             if (sourceItem.getAmount() == 0) {
-                this.deleteWithVersion(sourceItem) ;
+                this.deleteWithVersion(sourceItem.getId()) ;
             } else {
                 this.updateByPrimaryKeyWithVersion(sourceItem) ;
             }
