@@ -6,10 +6,8 @@ import com.company.project.service.ThCoinAccountService;
 import com.company.project.service.ThCoinItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class AccountCoreImpl implements AccountCore {
     @Autowired
     ThCoinAccountService thCoinAccountService;

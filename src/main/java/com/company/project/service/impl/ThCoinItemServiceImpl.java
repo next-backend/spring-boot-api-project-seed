@@ -2,16 +2,14 @@ package com.company.project.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.company.project.biz.config.Yn;
+import com.company.project.core.AbstractService;
 import com.company.project.dao.ThCoinItemMapper;
 import com.company.project.model.ThCoinItem;
 import com.company.project.service.ThCoinItemService;
-import com.company.project.core.AbstractService;
 import com.company.project.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import tk.mybatis.mapper.common.ExampleMapper;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.weekend.WeekendSqls;
 
@@ -24,7 +22,6 @@ import java.util.Date;
  */
 @Slf4j
 @Service
-@Transactional
 public class ThCoinItemServiceImpl extends AbstractService<ThCoinItem> implements ThCoinItemService {
     @Resource
     private ThCoinItemMapper thCoinItemMapper;

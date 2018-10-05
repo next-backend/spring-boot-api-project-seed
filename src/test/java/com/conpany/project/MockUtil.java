@@ -1,5 +1,6 @@
 package com.conpany.project;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -38,6 +39,12 @@ public class MockUtil {
                 builder.param(key, val);
             }
         }
-        mvc.perform(builder).andDo(MockMvcResultHandlers.print());
+        mvc.perform(builder).andReturn().getResponse().getContentAsString();
+    }
+
+    public static void mockPost(MockMvc mvc, String uri, Object o) throws Exception {
+        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post(uri, "json").characterEncoding("UTF-8")
+                .contentType(MediaType.APPLICATION_JSON).content(JSON.toJSONString(o));
+        mvc.perform(builder).andReturn().getResponse().getContentAsString();
     }
 }
